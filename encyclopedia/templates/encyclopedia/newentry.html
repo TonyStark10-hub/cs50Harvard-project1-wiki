@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+       
+    {% block body %}
+    {% if available == True %}
+        <div class="alert alert-danger" role="alert">
+            This title already exists. Try a different title.
+        </div>
+    {%endif%}
+
+    <h1>Create new entry</h1>
+    <div>
+        <form  method="POST">
+            {%csrf_token%}
+            <div>
+                <h3>Title</h3>
+                <input type="text" class="form-control" name="title" placeholder="Title" style="width: 80%;" autocomplete="off"
+            required>
+            </div>
+            <div>
+                <h3>Content of the Entry</h3>
+                <textarea name="content" class="form-control" autocomplete="off" placeholder="Enter content in markdown"
+                rows="25" style="width: 80%;
+                        margin-top: 50px;"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-outline-primary" style="margin-top: 25px;">Submit</button>
+            </div>
+            
+        </form>
+    </div>
+
+        
+    {% endblock %}
